@@ -1,0 +1,23 @@
+%h1
+  Datasources
+  .pull-right.new_button
+    =link_to new_datasource_path, class: "btn btn-success" do
+      %span.glyphicon.glyphicon-plus
+      Add Datasource
+
+.container-fluid
+  -@datasources.each do |datasource|
+    .col-md-4
+      .div.panel{class: datasource.state ? "panel-success" : "panel-danger"}
+        .panel-heading
+          = datasource.custom_name
+          %span.pull-right.clickable{"data-effect" => "fadeOut"}
+            = link_to  datasource_path(datasource), method: :delete, data: { confirm: 'Are you sure to delete this datasource?' } do
+              %i.fa.fa-times
+        .panel-body
+          %b
+            DB name:
+            =datasource.db_name
+          %br
+            Tables:
+            = datasource.tables.join(', ')

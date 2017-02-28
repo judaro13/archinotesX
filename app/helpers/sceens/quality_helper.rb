@@ -1,0 +1,2 @@
+module Sceens::QualityHelper
+end

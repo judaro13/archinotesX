@@ -1,0 +1,20 @@
+%h1 New Data Microservice
+
+.row
+  .form-horizontal
+    = form_for @service, url: data_services_path, method: :post  do |f|
+      .form-group
+        = label_tag "Name", nil,  class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :name, class: "form-control"
+      .form-group
+        = label_tag "Datasource", nil,  class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.select :datasource_id, @datasource.collect { |p| [ p.custom_name, p.id ] }, {include_blank: true}, {class: "form-control", id: 'select_datasource'}
+      .form-group
+        = label_tag "Table", nil,  class: "col-sm-2 control-label"
+        .col-sm-10
+          =f.select :table, options_for_select(@tables.collect { |t| [t,t] }, 0), {}, { id: 'select_table', class: "form-control" }
+
+      .col-sm-offset-2.col-sm-10
+        = f.submit "Create", class: "btn btn-success"

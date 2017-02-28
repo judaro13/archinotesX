@@ -1,0 +1,81 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ArchinotesX
+
+    %script{:crossorigin => "anonymous", :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
+
+    / Latest compiled and minified CSS
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :rel => "stylesheet"}/
+    / Optional theme
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css", :integrity => "sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp", :rel => "stylesheet"}/
+    / Latest compiled and minified JavaScript
+    %script{:crossorigin => "anonymous", :integrity => "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+
+
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    %nav.navbar.navbar-dark
+      .container-fluid
+        %ul.nav.navbar-nav
+          %li
+            = link_to '/', class: "font-brand" do
+              %i.fa.fa-cogs
+              ArchinotesX - An ArcOps framework
+
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li{ class: active?("data_service")}
+              %a{href: data_services_path}
+                .glyphicon.glyphicon-home
+                Home
+            %li{ class: active?("datasource")}
+              %a{href: datasources_path}
+                %i.fa.fa-database
+                Datasources
+            %li{ class: active?("scene")}
+              %a{href: scenes_path}
+                %i.fa.fa-area-chart
+                Quatilty scenes
+            %li{ class: active?("view_point")}
+              %a{href: view_points_path}
+                .glyphicon.glyphicon-user
+                View points
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                .glyphicon.glyphicon-user
+                = current_user.email
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Admin", new_user_session_path
+                %li
+                  = link_to "Sign out", destroy_user_session_path, :method => :delete
+          - else
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                .glyphicon.glyphicon-user
+                Account
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Sign in", new_user_session_path
+                %li
+                  = link_to "Sign up", new_user_registration_path
+
+    .div
+      - if flash[:notice]
+        .alert.alert-success
+          %button.close{"data-dismiss" => "alert", :type => "button"} x
+          = flash[:notice]
+      - elsif flash[:alert]
+        .alert.alert-danger
+          %button.close{"data-dismiss" => "alert", :type => "button"} x
+          = flash[:alert]
+
+      = yield

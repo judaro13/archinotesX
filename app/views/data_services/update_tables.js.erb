@@ -1,0 +1,4 @@
+$("#select_table").empty()
+<%- @tables.each do |table| %>
+  $("#select_table").append("<option value='<%=table%>'> <%=table%></option>")
+<%- end%>

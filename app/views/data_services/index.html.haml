@@ -1,0 +1,18 @@
+%h1
+  Data Microservices
+
+  .pull-right.new_button
+    =link_to new_data_service_path, class: "btn btn-success" do
+      %span.glyphicon.glyphicon-plus
+      Add DB Service
+
+.container-fluid
+  -@services.each do |dbservice|
+    .col-md-4
+      .div.panel{class: dbservice.state ? "panel-success" : "panel-danger"}
+        .panel-heading
+          = dbservice.name
+          %span.pull-right.clickable{"data-effect" => "fadeOut"}
+            = link_to  data_service_path(dbservice), method: :delete, data: { confirm: 'Are you sure to delete this data microservice?' } do
+              %i.fa.fa-times
+        .panel-body

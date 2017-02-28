@@ -1,0 +1,33 @@
+%h1 New datasource
+
+.row
+  .form-horizontal
+    = form_for @datasource, method: :post  do |f|
+      .form-group
+        = label_tag "Local name", nil,  class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :custom_name, class: "form-control"
+      .form-group
+        = label_tag "DB name", nil,  class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :db_name, class: "form-control"
+      .form-group
+        = f.label :host, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :host, class: "form-control"
+      .form-group
+        = f.label :port, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :port, class: "form-control"
+      .form-group
+        = f.label :username, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :username, class: "form-control"
+      .form-group
+        = f.label :password, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :password, class: "form-control"
+      .col-sm-offset-2
+        .col-sm-5
+          = f.submit "Test Connection", class: "btn btn-default"
+          = f.submit "Create", class: "btn btn-success"

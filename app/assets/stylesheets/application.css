@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body{
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+}
+.nav-brand-icon{
+  width: 25px;
+  height: 25px;
+  float: left;
+  margin-right: 5px;
+}
+
+li a{
+  color: white;
+}
+
+.login{
+  background-color: black;
+  height: 100%;
+}
+
+.brand-text, .brand-text a, .brand-text a:hover{
+  color: white;
+}
+
+.navbar-dark {
+  background-image: linear-gradient(to bottom,#222 0,#222 100%);
+  border-color: #222;
+  border-radius: 0;
+}
+
+.nav-account {
+  background-color: black;
+}
+
+.font-brand{
+  font-size: 15px;
+}
+
+.content-home{
+  text-align: center;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  display:block;
+  margin-top: -20px;
+}
+
+.home-text{
+  background-color:rgba(0, 0, 0, 0);
+  margin-top: 20%;
+  color: white;
+}
+
+.intro-divider{
+  width: 40%;
+}
+
+h1.home{
+  font-size: 70px;
+}
+
+.active{
+  background: #424242; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#969696, #424242); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#969696, #424242); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#969696, #424242); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#969696, #424242); /* Standard syntax */
+  font-weight: bold;
+}
+
+.clickable a{
+  color: white;
+}
